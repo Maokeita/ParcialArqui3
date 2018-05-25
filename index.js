@@ -88,3 +88,49 @@ Neurona.train([{
     }
   }
 ]);
+port.on('data', function(data) {
+  //console.log("Valor 1 " + Sensor1 + " Valor 2 " + Sensor2 + " Valor 3 " + Sensor3 + " Valor 4 " + Sensor4);
+  for (var i = 0; i < data.length; i++) {
+    switch (Estado) {
+      case 0:
+        if (data[i] == 97) {
+          Estado = 1;
+          Sensor1Tmp = 0;
+        } else if (data[i] == 100) {
+          Estado = 2;
+          Sensor2Tmp = 0;
+        } else if (data[i] == 102) {
+          Estado = 3;
+          Sensor3Tmp = 0;
+        } else if (data[i] == 104) {
+          Estado = 4;
+          Sensor4Tmp = 0;
+        }
+        break;
+      case 1:
+        if (data[i] == 99) {
+          Sensor1 = Sensor1Tmp;
+          Estado = 0;
+          //console.log("El Valor es:" + Sensor1);
+        } else {
+          Sensor1Tmp = Sensor1Tmp * 10 + data[i];
+        }
+        break;
+      case 2:
+        if (data[i] == 101) {
+          Sensor2 = Sensor2Tmp;
+          Estado = 0;
+          //console.log("El Valor es:" + Sensor1);
+        } else {
+          Sensor2Tmp = Sensor2Tmp * 10 + data[i];
+        }
+        break;
+      case 3:
+        if (data[i] == 103) {
+          Sensor3 = Sensor3Tmp;
+          Estado = 0;
+          //console.log("El Valor es:" + Sensor1);
+        } else {
+          Sensor3Tmp = Sensor3Tmp * 10 + data[i];
+        }
+        break;
