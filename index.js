@@ -134,3 +134,48 @@ port.on('data', function(data) {
           Sensor3Tmp = Sensor3Tmp * 10 + data[i];
         }
         break;
+        case 4:
+          if (data[i] == 105) {
+            Sensor4 = Sensor4Tmp;
+            Estado = 0;
+            var respuesta = Neurona.run({
+              input: {
+                s1: Sensor1,
+                s2: Sensor2,
+                s3: Sensor3,
+                s4: Sensor4
+              }
+            }); // [0.987]
+            console.log("la respuesta es " + respuesta.sf0);
+            console.log("la respuesta es " + respuesta.sf1);
+            console.log("la respuesta es " + respuesta.sf2);
+            console.log("la respuesta es " + respuesta.sf3);
+            if (respuesta.sf0 > 0.75) {
+              port.write("A");
+              console.log("la letra es a");
+            } else {
+              port.write("B");
+            }
+            if (respuesta.sf1 > 0.75) {
+              port.write("C");
+            } else {
+              port.write("D");
+            }
+            if (respuesta.sf2 > 0.75) {
+              port.write("E");
+            } else {
+              port.write("F");
+            }
+            if (respuesta.sf3 > 0.75) {
+              port.write("G");
+            } else {
+              port.write("H");
+            }
+            //console.log("El Valor es:" + Sensor1);
+          } else {
+            Sensor4Tmp = Sensor4Tmp * 10 + data[i];
+          }
+          break;
+      }
+    }
+  });
