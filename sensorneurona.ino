@@ -41,3 +41,43 @@ void loop() {
   for (int i = 3; i >= 0; i--) {
     Serial.write(Residuo[i]);
   }
+  }
+  Serial.write('e');
+
+  //Sensor 3 1234 4 3 2 1 
+  for (int i = 0; i <= 3; i++) {
+    Residuo[i] = Valor3 % 10;
+    Valor3 = Valor3 / 10;
+  }
+
+  Serial.write('f');
+  for (int i = 3; i >= 0; i--) {
+    Serial.write(Residuo[i]);
+  }
+  Serial.write('g');
+
+//Sensor 4 1234 4 3 2 1 
+  for (int i = 0; i <= 3; i++) {
+    Residuo[i] = Valor4 % 10;
+    Valor4 = Valor4 / 10;
+  }
+
+  Serial.write('h');
+  for (int i = 3; i >= 0; i--) {
+    Serial.write(Residuo[i]);
+  }
+  Serial.write('i');
+
+   if (Serial.available() ) {
+    char letra = Serial.read();
+    if (letra == 'A') {
+      digitalWrite(salida, LOW);
+    }
+    //Encender el boton de la alarma
+    else if (letra == 'B') {
+      digitalWrite(salida, HIGH);
+      }
+}
+  //Serial.println();
+  delay(1000);
+}
