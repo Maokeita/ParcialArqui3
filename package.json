@@ -1,0 +1,24 @@
+{
+  "name": "parcialarqui3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "brainjs": "^0.7.4",
+    "serialport": "^6.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maokeita/ParcialArqui3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maokeita/ParcialArqui3/issues"
+  },
+  "homepage": "https://github.com/Maokeita/ParcialArqui3#readme"
+}
